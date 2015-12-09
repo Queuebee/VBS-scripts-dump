@@ -1,0 +1,25 @@
+'original chatbot'
+
+set shell = createobject("wscript.shell")
+strValue = 1
+strtimes = inputbox ("many??")
+if not isnumeric(strtimes) then
+lol = msgbox("lol get rekt")
+wscript.quit
+end if
+strtdelay = inputbox ("interval? 1000ths")
+msgbox "after you click you go 5 secbye"
+wscript.sleep(5000)
+for i=1 to strtimes
+Shell.Sendkeys("ChatNuker initiated.")
+Shell.SendKeys "{Enter}"
+Shell.Sendkeys("This Nukebot has a nifty counting script, too!")
+Shell.SendKeys "{Enter}"
+Shell.Sendkeys("This was message sequence:" & strValue)
+strValue = i+1
+Shell.SendKeys "{Enter}"
+Shell.SendKeys "{Enter}"
+wscript.sleep(strtdelay)
+next
+Shell.Sendkeys("This Demo was programmed by QB Coorporation Boulevard Technologies incoorporated zooi manufacturers")
+Shell.SendKeys "{Enter}"

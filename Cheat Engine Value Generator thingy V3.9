@@ -1,4 +1,4 @@
-'Cheat Engine Value-generator'
+'Cheat Engine Value-generator V3.9'
 
 
 
@@ -13,37 +13,51 @@ set shell = createobject("wscript.shell")
 	CountMax = inputBox("How many values would you like to generate?")
 			if not isnumeric(strtimes) then
 				lol = msgbox("That is NaN. Script end.")
-			wscript.quit
+				wscript.quit
 			end if
+			
+			if CountMax >=100 then
+				Msgbox"Too much, can't handle! Forcequit!"
+				wscript.quit
+			end if
+				
 	
 	'Starting Value'
-	Value = inputBox("What is your starting Value?")
+	StartValue = inputBox("What is your starting Value?")
 			if not isnumeric(strtimes) then
-				lol = msgbox("That is NaN. Script end.")
+				Mmsgbox("That is NaN. Script end.")
 				wscript.quit
 			end if	
 			
 	'Increment per iteration'	
 	Increment = inputBox("What is change of value per Increment(Decrement not accepted)?")
 			if not isnumeric(strtimes) then
-				lol = msgbox("That is NaN. Script end.")
+				Msgbox("That is NaN. Script end.")
 				wscript.quit
 			end if	
 			
 	'Multiplier'	
 	Multiplier = inputBox("With which number would you like to multiply? (1 for no multiplication)")	
 			if not isnumeric(strtimes) then
-				lol = MsgBox("That is NaN. Script end.")
+				MsgBox("That is NaN. Script end.")	
 				wscript.quit
 			end if
-			
+			if Multiplier = "" then
+				MsgBox("That is NaN. Script end.")	
+				wscript.quit
+			end if
 	'Last Value'		
 	
 	'LastValue = Value*Multiplier'
 	
 	
 	'Delay per output'
-	Delay = inputbox ("How much delay would you like inbetween generated values? (10ms recommended)")	
+	Delay = inputbox ("How much delay would you like inbetween generated values? (10ms recommended)")
+		if Delay >=10000 then
+		msgbox "This script is not meant to run slow, have a nice day"
+		wscript.quit
+		end if
+	
 	
 	MsgBox "All Settings are now set. Press OK to start script (5 second delay till start)"
 	wscript.sleep(5000)
@@ -62,7 +76,7 @@ set shell = createobject("wscript.shell")
 	Shell.SendKeys "{Enter}"
 	Shell.SendKeys "{Enter}"
 	Shell.SendKeys "{TAB}"
-	Shell.SendKeys("StartValue: " & Value)
+	Shell.SendKeys("StartValue: " & StartValue)
 	Shell.SendKeys "{Enter}"
 	Shell.SendKeys "{Enter}"
 	Shell.SendKeys "{TAB}"
@@ -75,8 +89,10 @@ set shell = createobject("wscript.shell")
 	Shell.SendKeys "{Enter}"
 	
 	
-	for Count = 1 to CountMax
+	for Count = 0 to CountMax
 	
+		Value = Count*Increment + StartValue 
+		
 		Shell.Sendkeys("#" & Count)
 		Shell.Sendkeys"{TAB}"
 		Shell.Sendkeys(Value)
@@ -86,7 +102,7 @@ set shell = createobject("wscript.shell")
 
 		wscript.sleep(Delay)
 
-		Value = Value+(Increment*Count)
+		
 	next
 	
 

@@ -1,0 +1,90 @@
+'Cheat Engine Value-generator'
+
+
+
+
+set shell = createobject("wscript.shell")
+
+	MsgBox"Welcome to The Value-Gen 1.0"
+
+	'string origins'
+
+	'Amount of wanted generator iterations'
+	CountMax = inputBox("How many values would you like to generate?")
+			if not isnumeric(strtimes) then
+				lol = msgbox("That is NaN. Script end.")
+			wscript.quit
+			end if
+	
+	'Starting Value'
+	Value = inputBox("What is your starting Value?")
+			if not isnumeric(strtimes) then
+				lol = msgbox("That is NaN. Script end.")
+				wscript.quit
+			end if	
+			
+	'Increment per iteration'	
+	Increment = inputBox("What is change of value per Increment(Decrement not accepted)?")
+			if not isnumeric(strtimes) then
+				lol = msgbox("That is NaN. Script end.")
+				wscript.quit
+			end if	
+			
+	'Multiplier'	
+	Multiplier = inputBox("With which number would you like to multiply? (1 for no multiplication)")	
+			if not isnumeric(strtimes) then
+				lol = MsgBox("That is NaN. Script end.")
+				wscript.quit
+			end if
+			
+	'Last Value'		
+	
+	'LastValue = Value*Multiplier'
+	
+	
+	'Delay per output'
+	Delay = inputbox ("How much delay would you like inbetween generated values? (10ms recommended)")	
+	
+	MsgBox "All Settings are now set. Press OK to start script (5 second delay till start)"
+	wscript.sleep(5000)
+	
+	'settings log'
+	
+	Shell.Sendkeys("Settings Chosen:")
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{TAB}"
+	Shell.SendKeys("Number of iterations: " & CountMax)
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{TAB}"
+	Shell.SendKeys(" Increment: " & Increment)
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{TAB}"
+	Shell.SendKeys("StartValue: " & Value)
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{TAB}"
+	Shell.SendKeys("Multiplier: " & Multiplier)
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{TAB}"
+	Shell.SendKeys("Delay:" & Delay & "(ms)")
+	Shell.SendKeys "{Enter}"
+	Shell.SendKeys "{Enter}"
+	
+	
+	for Count = 1 to CountMax
+	
+		Shell.Sendkeys("Input#" & Count & " OutPut: " & Value*Multiplier)
+		Shell.SendKeys "{Enter}"
+
+		wscript.sleep(Delay)
+
+		Value = Value+(Increment*Count)
+	next
+	
+
+	Shell.Sendkeys("This Demo was programmed by QB Coorporation Boulevard Technologies incoorporated zooi manufacturers")
+	Shell.SendKeys "{Enter}"

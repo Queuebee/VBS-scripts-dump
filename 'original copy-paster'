@@ -1,0 +1,22 @@
+'original copy-paster'
+
+set shell = createobject("wscript.shell")
+msgbox ("Make sure you have something copied! (CTRL-C)")
+strValue = 1
+strtimes = inputbox ("many??")
+if not isnumeric(strtimes) then
+lol = msgbox("lol get rekt")
+wscript.quit
+end if
+strtdelay = inputbox ("interval? 1000ths")
+msgbox "after you click you go 5 secbye"
+wscript.sleep(5000)
+for i=1 to strtimes
+Shell.Sendkeys("Chatnuker says: 'Message number " & strValue & " is incoming!'")
+Shell.SendKeys "{Enter}"
+Shell.Sendkeys "^V{ENTER}"
+strValue = i+1
+wscript.sleep(strtdelay)
+next
+Shell.Sendkeys("This Demo was programmed by QB Coorporation Boulevard Technologies incoorporated zooi manufacturers")
+Shell.SendKeys "{Enter}"

@@ -77,7 +77,11 @@ set shell = createobject("wscript.shell")
 	
 	for Count = 1 to CountMax
 	
-		Shell.Sendkeys("Input#" & Count & " OutPut: " & Value*Multiplier)
+		Shell.Sendkeys("#" & Count)
+		Shell.Sendkeys"{TAB}"
+		Shell.Sendkeys(Value)
+		Shell.Sendkeys"{TAB}"
+		Shell.Sendkeys(Value*Multiplier)
 		Shell.SendKeys "{Enter}"
 
 		wscript.sleep(Delay)
